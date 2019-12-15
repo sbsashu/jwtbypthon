@@ -1,0 +1,9 @@
+/.vscode
+/.git
+/denvx
+/dprojx
+wq
+bet.py
+/src/jwttoken/users/migrations
+/src/jwttoken/users/migrations/__pycache__
+db.sqlite3
