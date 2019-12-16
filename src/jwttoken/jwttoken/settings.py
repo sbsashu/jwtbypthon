@@ -11,15 +11,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #MANUALLy
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION':(
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
-    )
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+
 }
 
 # Quick-start development settings - unsuitable for production
@@ -29,10 +33,16 @@ REST_FRAMEWORK = {
 SECRET_KEY = 'e+i_=m^o7ohi36eyy3n9wm=qval2+(g+t7oihd*rn^s6t1bdq('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
-
+# JWT AUtH
+JWT_AUTH = {
+    'JWT_VERIFY': True,
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=3000),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
 
 # Application definition
 
@@ -57,7 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'jwttoken.urls'
-
+AUTH_USER_MODEL = 'users.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -82,8 +92,12 @@ WSGI_APPLICATION = 'jwttoken.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'jwt',
+        'USER': 'jwt_token',
+        'PASSWORD': 'pass@123',
+        'HOST': 'localhost',
+        "PORT": '',
     }
 }
 

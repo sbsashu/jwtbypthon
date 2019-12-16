@@ -4,6 +4,14 @@
 /dprojx
 wq
 bet.py
-/src/jwttoken/users/migrations
-/src/jwttoken/users/migrations/__pycache__
+src/jwttoken/users/migrations
+src/jwttoken/users/migrations/__pycache__
 db.sqlite3
+src/jwttoken/users/__pycache__/serializers.cpython-36.pyc
+src/jwttoken/users/__pycache__/urls.cpython-36.pyc
+src/jwttoken/users/__pycache__/views.cpython-36.pyc
+src/jwttoken/db.sqlite3
+src/jwttoken/db.sqlite3
+src/jwttoken/users/migrations/__pycache__/__init__.cpython-36.pyc
+src/jwttoken/users/__pycache__/admin.cpython-36.pyc
+src/jwttoken/users/__pycache__/models.cpython-36.pyc
